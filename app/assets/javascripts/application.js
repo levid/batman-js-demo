@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 
 // Batman.js and its adapters
 //= require batman/batman
