@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'batman-rails', github: 'Shopify/batman-rails'
+#gem 'batman-rails', git: 'git://github.com/Shopify/batman-rails.git'
 gem 'haml-rails'
 gem 'haml_assets'
 gem 'ejs'

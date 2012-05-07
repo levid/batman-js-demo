@@ -1,5 +1,5 @@
 <%=
-  prefix = "#{Rails.root}/app/assets/javascripts/views"
+  prefix = "#{Rails.root}/app/assets/javascripts/batman/views"
   paths = Dir.glob("#{prefix}/**/*").select{|f| File.file?(f) && (f =~ /\.(haml|html|erb)$/i) }
   paths.inject({}) do |all_views, f|
     viewname = f.sub( /^#{prefix}/, '' ).sub( /\..*$/i, '' )

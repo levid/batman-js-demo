@@ -1,0 +1,8 @@
+%a.btn.btn-primary{'data-route' => 'Post | routeToAction "new"'} New Post
+
+.row
+  #content.span10
+    %h2{"data-bind" => '"post" | pluralize posts.length | prepend "Showing "'}
+    #posts
+      %div{"data-foreach-post" => "posts"}
+        .post{"data-partial" => "posts/_post"}

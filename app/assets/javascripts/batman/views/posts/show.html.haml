@@ -1,0 +1,7 @@
+#show-post.row
+  #content.span10
+    %h1{"data-bind" => "post.title"}
+    %div{"data-bind" => "post.content"}
+    .meta
+      %a.btn.btn-primary{"data-route" => 'post | routeToAction "edit"'} Edit
+      %a.btn{'data-route' => 'Post'} Back

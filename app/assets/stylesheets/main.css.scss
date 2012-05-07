@@ -19,3 +19,50 @@ body { padding-top: 40px; }
 .navbar .brand {
   //color: #FAFFB8;
 }
+
+// Place all the styles related to the memories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1, h2, h3, h4, h5, h6, p, div {
+  font-family: museo-slab, sans-serif;
+}
+html, body {
+  background-color: #eee;
+}
+
+.container > footer p {
+  text-align: center; /* center align it with the container */
+}
+
+/* The white background content wrapper */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.notice {
+    border: #444447 1px solid;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#error-explanation ul {
+    margin: 10px 15px;
+}
+.error {
+    border: 1px solid #c87872;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#posts {
+  list-style-type: none;
+}

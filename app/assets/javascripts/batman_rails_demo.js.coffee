@@ -1,16 +1,11 @@
 window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
-  @global yes
 
   @title = "CRUD Demo"
-  Batman.ViewStore.prefix = 'assets/views'
+  Batman.ViewStore.prefix = 'assets/batman/views'
 
-  @navLinks =
-  [
-    href: "/#!/posts/"
-    text: "Posts"
-  ,
-    href: "/#!/logout"
-    text: "Log out"
+  @navLinks: [
+    {href: "/#!/posts/", text: "Posts"},
+    {href: "/#!/logout",text: "Log out"}
   ]
 
   @resources 'posts'
@@ -18,12 +13,19 @@ window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
 
   @on 'run', ->
     console?.log "Running ...."
+    #user = new Classifieds.User()
+    #user.url = '/sessions/current'
+    #user.load (err) -> throw err if err
+    #@set 'currentUser', user
     #BatmanRailsDemo.preloadViews()
 
   @on 'ready', ->
     console?.log "BatmanRailsDemo ready for use."
 
+  # flash is a simple object
   @flash: Batman()
+
+  # when you set an message, it auto-expires
   @flash.accessor
     get: (key) -> @[key]
     set: (key, value) ->

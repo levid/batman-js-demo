@@ -7,7 +7,6 @@
       = javascript_include_tag "application"
       = csrf_meta_tags
   %body
-    #header
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -17,13 +16,14 @@
             %li{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks"}}
               %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href", "addclass-selected" => "nav.selected"}}
     #main.container
-      %p#flashnotice.alert-message.success{:data => {"showif" => "BatmanRailsDemo.flash.success.length"}}
-        %a.close{:href => "#", :onclick => "$('#flashnotice').hide(); return false"} ×
-        %span{:data => {"bind" => "BatmanRailsDemo.flash.success"}}
-      %p#flashwarning.alert-message.error{:data => {"showif" => "BatmanRailsDemo.flash.error.length"}}
-        %a.close{:href => "#", :onclick => "$('#flashwarning').hide(); return false"} ×
-        %span{:data => {"bind" => "BatmanRailsDemo.flash.error"}}
-      %div{:data => {"yield" => "main"}}
-      %footer
-        %p
-          \© zhubert #{Time.now.year}
+      .content
+        %p#flashnotice.alert.alert-success{:data => {"showif" => "window.BatmanRailsDemo.flash.success.length"}}
+          %a.close{:href => "#", :onclick => "$('#flashnotice').hide(); return false"} ×
+          %span{:data => {"bind" => "window.BatmanRailsDemo.flash.success"}}
+        %p#flashwarning.alert.alert-error{:data => {"showif" => "window.BatmanRailsDemo.flash.error.length"}}
+          %a.close{:href => "#", :onclick => "$('#flashwarning').hide(); return false"} ×
+          %span{:data => {"bind" => "window.BatmanRailsDemo.flash.error"}}
+        %div{:data => {"yield" => "main"}}
+        %footer
+          %p
+            &copy; zhubert #{Time.now.year}

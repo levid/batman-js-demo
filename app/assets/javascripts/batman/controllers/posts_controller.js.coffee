@@ -1,4 +1,6 @@
 class BatmanRailsDemo.PostsController extends Batman.Controller
+  routingKey: 'posts'
+
   index: (params) ->
     BatmanRailsDemo.Post.load (err) -> throw err if err
     @set 'posts', BatmanRailsDemo.Post.get('all')
@@ -35,7 +37,7 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
       if err
         throw err unless err instanceof Batman.ErrorsSet
       else
-        BatmanRailsDemo.flashSuccess "#{@get('post.title')} created successfully!"
+        BatmanRailsDemo.flashSuccess "#{@get('post.title')} updated successfully!"
         @redirect '/posts'
 
   destroy: (params) ->

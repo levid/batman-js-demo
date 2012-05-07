@@ -1,7 +1,0 @@
-%h1 Edit Post
-%form.edit_post#edit_post{'data-formfor-post' => 'post', 'data-event-submit' => 'update'}
-  %input#post_title{title: "post[title]", 'data-bind' => "post.title", placeholder: 'title'}
-  %input#post_content{content: "post[content]", 'data-bind' => "post.content", placeholder: 'content'}
-  %input{type: "submit", value: "Save"}
-
-%a{'data-route' => 'Post'} Back

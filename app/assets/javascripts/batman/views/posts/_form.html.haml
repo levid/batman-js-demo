@@ -1,0 +1,24 @@
+%fieldset
+  %legend
+    %span{"data-showif" => "post.isNew"} New Post
+    %span{"data-hideif" => "post.isNew"} Edit Post
+  #error-explanation.alert-message.block-message.error{"data-showif" => "post.errors.length"}
+    %p
+      %strong
+        %span{"data-bind" => "post.errors.length"}
+        %span{"data-bind" => "'error' | pluralize post.errors.length"}
+        prevented this post from being created:
+    %ul
+      %li{"data-bind" => "error.message", "data-foreach-error" => "post.errors"}
+  .clearfix{"data-addclass-error" => 'post.errors.title.length'}
+    %label{:for => "post_title"} Title
+    .input
+      %input#post_title.span8{"data-bind" => "post.title", :name => "post[title]", :size => "30", :type => "text"}
+%fieldset
+  .clearfix{"data-addclass-error" => 'post.errors.content.length'}
+    %label{:for => "post_content"} Description
+    .input
+      %textarea#post_content.span8{:cols => "40", "data-bind" => "post.content", :name => "post[content]", :rows => "20"}
+.actions
+  %input.btn.btn-primary{:name => "commit", :type => "submit", :value => "Submit"}
+    %a.btn{'data-route' => 'Post'} Cancel
