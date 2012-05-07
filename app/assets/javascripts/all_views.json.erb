@@ -1,0 +1,12 @@
+<%=
+  prefix = "#{Rails.root}/app/assets/javascripts/views"
+  paths = Dir.glob("#{prefix}/**/*").select{|f| File.file?(f) && (f =~ /\.(haml|html|erb)$/i) }
+  paths.inject({}) do |all_views, f|
+    viewname = f.sub( /^#{prefix}/, '' ).sub( /\..*$/i, '' )
+    view = File.read(f)
+    view = ERB.new(view).result if f =~ /\.erb$/i
+    view = Haml::Engine.new(view).to_html if f =~ /\.haml$/i
+    all_views[viewname] = view
+    all_views
+  end.to_json
+%>

@@ -1,0 +1,7 @@
+%h1 New Post
+%form.new_post#new_post{'data-formfor-post' => 'post', 'data-event-submit' => 'create'}
+  %input#post_title{title: "post[title]", 'data-bind' => "post.title", placeholder: 'title'}
+  %input#post_content{content: "post[content]", 'data-bind' => "post.content", placeholder: 'content'}
+  %input{type: "submit", value: "Add"}
+
+%a{'data-route' => 'posts'} Back

@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+      %title CRUD Demo
+      = stylesheet_link_tag 'application'
+      = javascript_include_tag "application"
+      = csrf_meta_tags
+  %body
+    #header
+      .wrap.clearfix
+        %h1{:data => {"bind" => "window.BatmanRailsDemo.title"}}
+        %ul.sf-menu
+          %li.firstSub{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks"}}
+            %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href", "addclass-selected" => "nav.selected"}}
+    #main.container
+      %p#flashnotice.alert-message.success{:data => {"showif" => "BatmanRailsDemo.flash.success.length"}}
+        %a.close{:href => "#", :onclick => "$('#flashnotice').hide(); return false"} ×
+        %span{:data => {"bind" => "BatmanRailsDemo.flash.success"}}
+      %p#flashwarning.alert-message.error{:data => {"showif" => "BatmanRailsDemo.flash.error.length"}}
+        %a.close{:href => "#", :onclick => "$('#flashwarning').hide(); return false"} ×
+        %span{:data => {"bind" => "BatmanRailsDemo.flash.error"}}
+      %div{:data => {"yield" => "main"}}
+      %footer
+        %p
+          \© zhubert #{Time.now.year}

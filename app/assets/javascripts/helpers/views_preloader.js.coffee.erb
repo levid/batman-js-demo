@@ -1,0 +1,8 @@
+BatmanRailsDemo.preloadViews = () ->
+  new Batman.Request
+    url: '<%= asset_path("all_views.json") %>'
+    type: 'json'
+    error: (response)  -> throw new Error("Could not load views")
+    success: (all_views) =>
+      for view of all_views
+        Batman.View.store.set(view, all_views[view])
