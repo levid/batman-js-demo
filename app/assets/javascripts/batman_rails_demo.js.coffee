@@ -2,7 +2,7 @@ window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
   @global yes
 
   @title = "CRUD Demo"
-  Batman.ViewStore::prefix = 'assets/views'
+  Batman.ViewStore.prefix = 'assets/views'
 
   @navLinks =
   [
@@ -18,7 +18,7 @@ window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
 
   @on 'run', ->
     console?.log "Running ...."
-    BatmanRailsDemo.preloadViews()
+    #BatmanRailsDemo.preloadViews()
 
   @on 'ready', ->
     console?.log "BatmanRailsDemo ready for use."

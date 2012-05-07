@@ -1,6 +1,6 @@
 %h1 Batman Demo
 
-%a{'data-route' => 'posts.new'} New Post
+%a{'data-route' => "Post | routeToAction 'new'"} New Post
 
 %ul#posts
   %li{'data-foreach-post' => 'posts', 'data-partial' => 'posts/_post', 'data-bind-id' => 'post.id', class: 'post'}

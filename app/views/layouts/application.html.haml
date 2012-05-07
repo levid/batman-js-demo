@@ -8,11 +8,14 @@
       = csrf_meta_tags
   %body
     #header
-      .wrap.clearfix
-        %h1{:data => {"bind" => "window.BatmanRailsDemo.title"}}
-        %ul.sf-menu
-          %li.firstSub{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks"}}
-            %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href", "addclass-selected" => "nav.selected"}}
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href => '/'}
+            CRUD
+          %ul.nav
+            %li{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks"}}
+              %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href", "addclass-selected" => "nav.selected"}}
     #main.container
       %p#flashnotice.alert-message.success{:data => {"showif" => "BatmanRailsDemo.flash.success.length"}}
         %a.close{:href => "#", :onclick => "$('#flashnotice').hide(); return false"} ×
