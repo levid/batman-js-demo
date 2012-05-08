@@ -1,7 +1,7 @@
 %fieldset
   %legend
-    %span{"data-showif" => "post.isNew"} New Post
-    %span{"data-hideif" => "post.isNew"} Edit Post
+    %span{"data-hideif" => "post.id"} New Post
+    %span{"data-showif" => "post.id"} Edit Post
   #error-explanation.alert-message.block-message.error{"data-showif" => "post.errors.length"}
     %p
       %strong

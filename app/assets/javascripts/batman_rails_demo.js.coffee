@@ -1,6 +1,8 @@
 window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
 
   @title = "CRUD Demo"
+
+  # 0.8.0 changed to this syntax
   Batman.ViewStore.prefix = 'assets/batman/views'
 
   @navLinks: [
