@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', github: 'rails/rails', branch: '3-2-stable'
+
+# nab this for the initial generator, but
+# put 0.9.0 in asset pipeline, this still ship 0.8.0
 gem 'batman-rails', git: 'git://github.com/Shopify/batman-rails.git'
 gem 'haml-rails'
 gem 'haml_assets'

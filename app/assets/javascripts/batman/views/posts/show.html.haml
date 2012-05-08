@@ -7,7 +7,8 @@
       %div{"data-foreach-comment" => "post.comments"}
         .comment{"data-partial" => "comments/_comment"}
     .meta
-      %a.btn.btn-primary{"data-route" => 'post | routeToAction "edit"'} Edit
+      %a.btn.btn-primary{"data-route" => 'routes.posts[post].edit'} Edit
       %a.btn{'data-route' => 'routes.posts[post].comments.new'} New Comment
+      %a.btn{"data-event-click" => 'destroy'} Delete
       %a.btn{'data-route' => 'routes.posts'} Back
 

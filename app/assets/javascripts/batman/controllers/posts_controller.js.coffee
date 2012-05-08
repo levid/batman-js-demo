@@ -2,9 +2,9 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
   routingKey: 'posts'
 
   index: (params) ->
-    BatmanRailsDemo.Post.load (err) -> throw err if err
-    @set 'posts', BatmanRailsDemo.Post.get('all')
-    @set 'post', new BatmanRailsDemo.Post()
+    BatmanRailsDemo.Post.load (err,result) =>
+      throw err if err
+      @set 'posts', result
 
   show: (params) ->
     @set 'post', BatmanRailsDemo.Post.find parseInt(params.id, 10), (err) ->
@@ -41,5 +41,12 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
         BatmanRailsDemo.flashSuccess "#{@get('post.title')} updated successfully!"
         @redirect '/posts'
 
-  destroy: (params) ->
+  # not routable, an event
+  destroy: ->
+    @get('post').destroy (err) =>
+      if err
+        throw err unless err instanceof Batman.ErrorsSet
+      else
+        BatmanRailsDemo.flashSuccess "Removed successfully!"
+        @redirect '/posts'
 
