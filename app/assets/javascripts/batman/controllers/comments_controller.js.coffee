@@ -7,11 +7,12 @@ class BatmanRailsDemo.CommentsController extends Batman.Controller
 
   create: (params) ->
     @new_comment = @get('comment')
-    @new_comment.save (err) =>
+    @new_comment.save (err,record) =>
       $('#new_comment').attr('disabled', false)
 
       if err
         throw err unless err instanceof Batman.ErrorsSet
+        #@set 'comment', record
       else
         BatmanRailsDemo.flashSuccess "Comment created successfully!"
         @redirect '/posts/' + @new_comment.get('post_id')
