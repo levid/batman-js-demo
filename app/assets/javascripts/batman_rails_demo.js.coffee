@@ -8,7 +8,8 @@ window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
     {href: "/#!/logout",text: "Log out"}
   ]
 
-  @resources 'posts'
+  @resources 'posts', ->
+    @resources 'comments'
   @root 'posts'
 
   @on 'run', ->

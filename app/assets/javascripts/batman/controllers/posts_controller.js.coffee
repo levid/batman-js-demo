@@ -9,6 +9,7 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
   show: (params) ->
     @set 'post', BatmanRailsDemo.Post.find parseInt(params.id, 10), (err) ->
       throw err if err
+
     @render source: 'posts/show'
 
   new: (params) ->

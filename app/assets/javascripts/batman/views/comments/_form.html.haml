@@ -1,0 +1,18 @@
+%fieldset
+  %legend
+    %span New Comment
+  #error-explanation.alert-message.block-message.error{"data-showif" => "comment.errors.length"}
+    %p
+      %strong
+        %span{"data-bind" => "comment.errors.length"}
+        %span{"data-bind" => "'error' | pluralize comment.errors.length"}
+        prevented this comment from being created:
+    %ul
+      %li{"data-bind" => "error.message", "data-foreach-error" => "comment.errors"}
+  .clearfix{"data-addclass-error" => 'comment.errors.content.length'}
+    %label{:for => "comment_content"} Description
+    .input
+      %textarea#comment_content.span8{:cols => "40", "data-bind" => "comment.content", :name => "comment[content]", :rows => "20"}
+.actions
+  %input.btn.btn-primary{:name => "commit", :type => "submit", :value => "Submit"}
+    %a.btn{'data-route' => 'Post'} Cancel
