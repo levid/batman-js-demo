@@ -4,33 +4,16 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
   index: (params) ->
     @set 'paginator', new BatmanRailsDemo.PostPaginator()
     @set 'currentPosition', 1
-    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
-    @resultant.observe 'response.total_count', (newValue,oldValue) =>
-      @set 'totalCount', newValue
-
-    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
-      @set 'posts', newValue
-      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
+    @_updatePagination()
 
   nextPage: ->
     @set('currentPosition', @get('currentPosition') + 10)
-    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
-    @resultant.observe 'response.total_count', (newValue,oldValue) =>
-      @set 'totalCount', newValue
-
-    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
-      @set 'posts', newValue
-      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
+    @_updatePagination()
 
   previousPage: ->
     @set('currentPosition', @get('currentPosition') - 10)
-    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
-    @resultant.observe 'response.total_count', (newValue,oldValue) =>
-      @set 'totalCount', newValue
+    @_updatePagination()
 
-    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
-      @set 'posts', newValue
-      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
 
   show: (params) ->
     @set 'post', BatmanRailsDemo.Post.find parseInt(params.id, 10), (err) ->
@@ -75,4 +58,14 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
       else
         BatmanRailsDemo.flashSuccess "Removed successfully!"
         @redirect '/posts'
+
+  _updatePagination: ->
+    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
+    @resultant.observe 'response.total_count', (newValue,oldValue) =>
+      @set 'totalCount', newValue
+
+    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
+      @set 'posts', newValue
+      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
+
 
