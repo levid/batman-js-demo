@@ -13,8 +13,8 @@
           %a.brand{:href => '/'}
             CRUD
           %ul.nav
-            %li{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks"}}
-              %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href", "addclass-selected" => "nav.selected"}}
+            %li{:data => {"foreach-nav" => "window.BatmanRailsDemo.navLinks", "addclass-active" => "nav.barehref | equals window.BatmanRailsDemo.currentRoute.pattern"}}
+              %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href"}}
     #main.container
       .content
         %p#flashnotice.alert.alert-success{:data => {"showif" => "window.BatmanRailsDemo.flash.success.length"}}

@@ -6,8 +6,8 @@ window.BatmanRailsDemo = class BatmanRailsDemo extends Batman.App
   Batman.ViewStore.prefix = 'assets/batman/views'
 
   @navLinks: [
-    {href: "/#!/posts/", text: "Posts"},
-    {href: "/#!/logout",text: "Log out"}
+    {href: "/#!/posts/", barehref: "/posts", text: "Posts"},
+    {href: "/#!/posts/new",barehref: "/posts/new", text: "New"}
   ]
 
   @resources 'posts', ->

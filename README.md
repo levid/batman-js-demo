@@ -11,7 +11,6 @@ Using [Batman.js](http://www.batmanjs.org), do the following:
 *   View Composition - weak, strong...just get it done
 *   No Framework Poison Pills - that would be bugs and things that would jeopardize a production app
 
-Optional
---------
+Optional:
 
 *   Real-time - Pusher

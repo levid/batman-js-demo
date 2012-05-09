@@ -1,7 +1,7 @@
 %a.btn.btn-primary{'data-route' => 'routes.posts.new'} New Post
 
 .row
-  #content.span10
+  #content.span12
     %h2{"data-bind" => '"post" | pluralize posts.length | prepend "Showing "'}
     #posts
       %div{"data-foreach-post" => "posts"}
