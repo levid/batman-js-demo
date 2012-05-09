@@ -2,9 +2,35 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
   routingKey: 'posts'
 
   index: (params) ->
-    BatmanRailsDemo.Post.load (err,result) =>
-      throw err if err
-      @set 'posts', result
+    @set 'paginator', new BatmanRailsDemo.PostPaginator()
+    @set 'currentPosition', 1
+    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
+    @resultant.observe 'response.total_count', (newValue,oldValue) =>
+      @set 'totalCount', newValue
+
+    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
+      @set 'posts', newValue
+      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
+
+  nextPage: ->
+    @set('currentPosition', @get('currentPosition') + 10)
+    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
+    @resultant.observe 'response.total_count', (newValue,oldValue) =>
+      @set 'totalCount', newValue
+
+    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
+      @set 'posts', newValue
+      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
+
+  previousPage: ->
+    @set('currentPosition', @get('currentPosition') - 10)
+    @resultant = @get('paginator').loadItemsForOffsetAndLimit(@get('currentPosition')-1,10)
+    @resultant.observe 'response.total_count', (newValue,oldValue) =>
+      @set 'totalCount', newValue
+
+    @get('paginator').observe 'cache.items', (newValue,oldValue) =>
+      @set 'posts', newValue
+      @set('endingPosition',@get('currentPosition') + newValue.length - 1)
 
   show: (params) ->
     @set 'post', BatmanRailsDemo.Post.find parseInt(params.id, 10), (err) ->

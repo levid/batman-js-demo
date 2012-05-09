@@ -1,8 +1,12 @@
 %a.btn.btn-primary{'data-route' => 'routes.posts.new'} New Post
 
+%a.btn.btn-primary{"data-event-click" => 'previousPage', "data-hideif" => "currentPosition | equals 1"} Previous
+%a.btn.btn-primary{"data-event-click" => 'nextPage', "data-hideif" => "endingPosition | equals totalCount"} Next
+
 .row
   #content.span12
-    %h2{"data-bind" => '"post" | pluralize posts.length | prepend "Showing "'}
+    %h2{"data-bind" => '"Showing " | append currentPosition | append "-" | append endingPosition | append " out of " | append totalCount'}
     #posts
       %div{"data-foreach-post" => "posts"}
         .post{"data-partial" => "posts/_post"}
+

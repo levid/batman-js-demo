@@ -3,8 +3,9 @@ class PostsController < ApplicationController
 
   def index
     #respond_with Post.includes(:comments).page(params[:page]).per(params[:limit])
+    page = params[:offset].to_i / 10
     respond_to do |format|
-      format.json { render :json => }
+      format.json { render :json => {:posts => Post.order("updated_at desc").includes(:comments).page(page+1).per(params[:limit]), :total_count => Post.count }}
     end
   end
 
