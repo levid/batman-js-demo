@@ -18,6 +18,7 @@
 #= require ./lib/batman.js
 #= require ./lib/batman.jquery.js
 #= require ./lib/batman.rails.js
+#= require ./lib/batman.paginator.js
 
 #= require batman_rails_demo
 

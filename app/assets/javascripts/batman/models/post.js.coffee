@@ -13,3 +13,8 @@ class BatmanRailsDemo.Post extends Batman.Model
 
   # associations
   @hasMany 'comments'
+
+class BatmanRailsDemo.PostPaginator extends Batman.ModelPaginator
+  model: BatmanRailsDemo.Post
+  limit: 10
+  totalPosts: 1000

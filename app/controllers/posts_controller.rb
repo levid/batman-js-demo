@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Post.find(:all, :include => :comments)
+    #respond_with Post.includes(:comments).page(params[:page]).per(params[:limit])
+    respond_to do |format|
+      format.json { render :json => }
+    end
   end
 
   def show
