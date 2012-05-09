@@ -4,7 +4,7 @@ Batman Rails Demo
 Using [Batman.js](http://www.batmanjs.org), do the following:
 
 *   Simple form CRUD
-*   Routing of resources - nested too
+*   Routing of resources - nested, with nav
 *   Associations - has_many, belongs_to
 *   Rails idiom and integration - shouldn't be an impedance mismatch
 *   Data binding - views change automatically when data does
