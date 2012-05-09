@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Post.all
+    respond_with Post.find(:all, :include => :comments)
   end
 
   def show
-    respond_with Post.find(params[:id])
+    respond_with Post.find(params[:id], :include => :comments)
   end
 
   # for validation, can't use responders (batman expects errors to not have a root)
