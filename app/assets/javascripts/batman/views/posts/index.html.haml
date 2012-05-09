@@ -1,11 +1,17 @@
-%a.btn.btn-primary{'data-route' => 'routes.posts.new'} New Post
-
-%a.btn.btn-primary{"data-event-click" => 'previousPage', "data-hideif" => "currentPosition | equals 1"} Previous
-%a.btn.btn-primary{"data-event-click" => 'nextPage', "data-hideif" => "endingPosition | equals totalCount"} Next
+%ul.pager
+  %li.previous{"data-hideif" => "currentPosition | equals 1"}
+    %a{"data-event-click" => 'previousPage'} &larr; Previous
+  %li.previous.disabled{"data-showif" => "currentPosition | equals 1"}
+    %a &larr; Previous
+  %li
+    %span.label{"data-bind" => '"Showing " | append currentPosition | append "-" | append endingPosition | append " out of " | append totalCount'}
+  %li.next{"data-hideif" => "endingPosition | equals totalCount"}
+    %a{"data-event-click" => 'nextPage' } Next &rarr;
+  %li.next.disabled{"data-showif" => "endingPosition | equals totalCount"}
+    %a Next &rarr;
 
 .row
   #content.span12
-    %h2{"data-bind" => '"Showing " | append currentPosition | append "-" | append endingPosition | append " out of " | append totalCount'}
     #posts
       %div{"data-foreach-post" => "posts"}
         .post{"data-partial" => "posts/_post"}
