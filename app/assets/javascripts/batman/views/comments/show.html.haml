@@ -1,3 +1,5 @@
 %p{"data-bind" => "comment.content"}
 .well
+  %a.btn.btn-primary{"data-route" => 'routes.posts[comment.post].comments[comment].edit'}Edit
   %a.btn{'data-route' => 'routes.posts[comment.post]'}Back
+  %a.btn.destroy.btn-danger{"data-event-click" => 'destroy'} Destroy

@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     respond_with @comment
   end
+
   # for validation, can't use responders (batman expects errors to not have a root)
   def create
     @post = Post.find(params[:post_id])
@@ -32,9 +33,8 @@ class CommentsController < ApplicationController
   # for validation, can't use responders (batman expects errors to not have a root)
   def update
     @comment = Comment.find(params[:id])
-    @comment = @comment.update_attributes(params[:comment])
     respond_to do |format|
-      if @comment.save
+      if @comment.update_attributes(params[:comment])
         format.json { render :json => @comment }
       else
         format.json { render :json => @comment.errors, :status => :unprocessable_entity}
