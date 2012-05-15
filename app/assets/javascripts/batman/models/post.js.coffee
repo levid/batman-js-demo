@@ -5,14 +5,14 @@ class BatmanRailsDemo.Post extends Batman.Model
   @persist Batman.RailsStorage
 
   # fields
-  @encode "title", "content"
+  @encode "title", "content", "id"
 
   # validations
   @validate "title", presence: true
   @validate "content", presence: true
 
   # associations
-  @hasMany 'comments'
+  @hasMany 'comments', {inverseOf: 'post', saveInline: false}
 
 class BatmanRailsDemo.PostPaginator extends Batman.ModelPaginator
   model: BatmanRailsDemo.Post

@@ -16,8 +16,13 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
 
 
   show: (params) ->
-    @set 'post', BatmanRailsDemo.Post.find parseInt(params.id, 10), (err) ->
+    BatmanRailsDemo.Post.find parseInt(params.id, 10), (err,result) =>
       throw err if err
+      @set 'post', result
+
+    @set 'paginator', new BatmanRailsDemo.CommentPaginator(post_id: params.id)
+    @set 'currentPosition', 1
+    @_updatePagination()
 
     @render source: 'posts/show'
 
@@ -65,7 +70,7 @@ class BatmanRailsDemo.PostsController extends Batman.Controller
       @set 'totalCount', newValue
 
     @get('paginator').observe 'cache.items', (newValue,oldValue) =>
-      @set 'posts', newValue
+      @set 'items', newValue
       @set('endingPosition',@get('currentPosition') + newValue.length - 1)
 
 

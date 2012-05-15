@@ -1,6 +1,12 @@
 class BatmanRailsDemo.CommentsController extends Batman.Controller
   routingKey: 'comments'
 
+  show: (params) ->
+    # Started GET "/comments/4fa2a42e37b37e335e00000d.json"
+    BatmanRailsDemo.Comment.find params.id, (err,result)  =>
+      throw err if err
+      @set 'comment', result
+
   new: (params) ->
     @set 'comment', new BatmanRailsDemo.Comment(post_id: params.postId)
     @form = @render()

@@ -7449,7 +7449,7 @@
           var id, key, parentID, plural, url;
           for (key in parents) {
             plural = parents[key];
-            parentID = this.dirtyKeys.get(key);
+            parentID = this.get('dirtyKeys').get(key);
             if (parentID === void 0) {
               parentID = this.get(key);
             }

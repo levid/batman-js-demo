@@ -7,7 +7,7 @@ class BatmanRailsDemo.Comment extends Batman.Model
   @persist Batman.RailsStorage
 
   # fields
-  @encode "content", "id"
+  @encode "content", "id", "post_id"
 
   # validations
   @validate "content", presence: true
@@ -15,5 +15,15 @@ class BatmanRailsDemo.Comment extends Batman.Model
   # associations
   @belongsTo 'post', { inverseOf: 'comments'}
 
-  # indicates that rails is nesting resources
+  # indicates that rails is nesting resources, shallow!
   @urlNestsUnder 'post'
+
+# not working, needs to pass params along
+class BatmanRailsDemo.CommentPaginator extends Batman.ModelPaginator
+  model: BatmanRailsDemo.Comment
+  limit: 10
+  totalComments: 1000
+
+  # pass along the post_id to the paginator
+  constructor: (args) ->
+    @params = {post_id: args.post_id}

@@ -1,1 +1,4 @@
-%p{"data-bind" => "comment.content"}
+.well
+  %p{"data-bind" => "comment.content"}
+  %p.details-link
+    %a.btn{"data-route" => "routes.posts[comment.post].comments[comment]"} View details »
