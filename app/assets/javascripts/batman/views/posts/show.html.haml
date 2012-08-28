@@ -3,7 +3,7 @@
 .hero-unit
   %p{"data-bind" => "post.content"}
 .well
-  %a.btn.btn-primary{"data-route" => 'routes.posts[post].edit'}Edit
+  %a.btn.btn-info{"data-route" => 'routes.posts[post].edit'}Edit
   %a.btn{'data-route' => 'routes.posts'}Back
   %a.btn.destroy.btn-danger{"data-event-click" => 'destroy'} Destroy
   %a.btn.btn-primary{'data-route' => 'routes.posts[post].comments.new'} New Comment

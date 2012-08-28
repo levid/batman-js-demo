@@ -20,7 +20,7 @@
 #= require ./lib/batman.rails.js
 #= require ./lib/batman.paginator.js
 
-#= require batman_rails_demo
+#= require ./batman/app
 
 #= require_tree ./batman/models
 #= require_tree ./batman/controllers
@@ -28,6 +28,7 @@
 
 
 #= require_tree .
+
 # Run the Batman app
 $(document).ready ->
   BatmanRailsDemo.run()
