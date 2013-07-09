@@ -22,3 +22,5 @@ Summary:
 
 *   Batman makes a strong bid for "Client-side Rails" in my book. It was very easy to use, no rabbit holes, easy to debug, MVC that a Rails developer would recognize.
 *   Delivered all the requirements above.
+
+Originally from [zhubert](https://github.com/zhubert/batman-rails-demo)
